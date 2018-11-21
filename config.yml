@@ -1,0 +1,12 @@
+development:
+  slack_url: https://hooks.slack.com/services/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
+  main_url: http://172.20.10.3:8000
+  serial_port: COM4
+
+
+
+production:
+  slack_url: https://hooks.slack.com/services/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
+  main_url: http://172.20.10.3:8000
+  serial_port: COM4
+
