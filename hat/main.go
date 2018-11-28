@@ -12,8 +12,14 @@ import (
 var mainUrl = config.Env("main_url")
 var SerialPort = config.Env("serial_port")
 
+type cap struct {
+	state bool
+}
+
+var Cap = cap{state: false}
+
 func main() {
-	err := SendIsWearing(true)
+	err := SendIsWearing(false)
 	if err != nil {
 		log.Err(err)
 		panic(err)
@@ -31,14 +37,19 @@ func main() {
 			log.Err(err)
 		}
 		if buf[0] == byte(0) {
-			SendIsWearing(false)
+			if Cap.state == true {
+				SendIsWearing(false)
+			}
 		} else {
-			SendIsWearing(true)
+			if Cap.state == false {
+				SendIsWearing(true)
+			}
 		}
 	}
 }
 
 func SendIsWearing(flg bool) error {
+	Cap.state = flg
 	flgS := "false"
 
 	if flg {
