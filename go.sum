@@ -6,6 +6,8 @@ github.com/golang/protobuf v1.2.0 h1:P3YflyNX/ehuJFLhxviNdFxQPkGK5cDcApsge1SqnvM
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/jcelliott/lumber v0.0.0-20160324203708-dd349441af25 h1:EFT6MH3igZK/dIVqgGbTqWVvkZ7wJ5iGN03SVtvvdd8=
 github.com/jcelliott/lumber v0.0.0-20160324203708-dd349441af25/go.mod h1:sWkGw/wsaHtRsT9zGQ/WyJCotGWG/Anow/9hsAcBWRw=
+github.com/makki0205/config v0.0.0-20180305065030-70207588bbb4 h1:uCpuypfcpSoPIq9uz/K9Ogq3+IvLmSfoQGfd8c8Dhnk=
+github.com/makki0205/config v0.0.0-20180305065030-70207588bbb4/go.mod h1:x8gTmtYZmh1GE2e/eSpTRTzDhV4eeChBtKC3So4n+iQ=
 github.com/makki0205/led v0.0.0-20181113082357-17f208da9b70 h1:iGwBOVqxmSEGPNq8neS+MAo0GNeIAXDKbvw8ED4Jpc0=
 github.com/makki0205/led v0.0.0-20181113082357-17f208da9b70/go.mod h1:UFnZKvJbskgp+opxv0/PBANX1mbAyfBd1fH1kNkQUcI=
 github.com/mattn/go-isatty v0.0.4 h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs=

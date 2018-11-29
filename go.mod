@@ -5,6 +5,7 @@ require (
 	github.com/gin-gonic/gin v1.3.0
 	github.com/golang/protobuf v1.2.0 // indirect
 	github.com/jcelliott/lumber v0.0.0-20160324203708-dd349441af25 // indirect
+	github.com/makki0205/config v0.0.0-20180305065030-70207588bbb4
 	github.com/makki0205/led v0.0.0-20181113082357-17f208da9b70
 	github.com/mattn/go-isatty v0.0.4 // indirect
 	github.com/nanobox-io/golang-scribble v0.0.0-20180621225840-336beac0a992
