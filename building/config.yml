@@ -1,5 +1,5 @@
 development:
-       led_port_a: /dev/ttyACM2
+       led_port_a: /dev/ttyACM0
        led_port_b: /dev/ttyACM5
        led_port_c: /dev/ttyUSB0
        led_port_d: /dev/ttyUSB1
