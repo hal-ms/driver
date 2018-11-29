@@ -1,0 +1,5 @@
+development:
+       led_port_a: hoge
+       led_port_b: hoge
+       led_port_c: hoge
+       led_port_d: hoge
