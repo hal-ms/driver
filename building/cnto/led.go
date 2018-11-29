@@ -3,6 +3,8 @@ package cnto
 import (
 	"net/http"
 
+	"github.com/makki0205/config"
+
 	"github.com/gin-gonic/gin"
 	led "github.com/makki0205/led"
 )
@@ -13,7 +15,10 @@ type LedInfo struct {
 	Blue  byte `json:"b"`
 }
 
-var LED, _ = led.NewLED("COM9")
+var LEDA, _ = led.NewLED(config.Env("led_port_a"))
+var LEDB, _ = led.NewLED(config.Env("led_port_b"))
+var LEDC, _ = led.NewLED(config.Env("led_port_c"))
+var LEDD, _ = led.NewLED(config.Env("led_port_d"))
 
 func Led(c *gin.Context) {
 	var l LedInfo
@@ -24,6 +29,13 @@ func Led(c *gin.Context) {
 		return
 	}
 
-	LED.Send(l.Red, l.Green, l.Blue)
+	SendAll(l.Red, l.Green, l.Blue)
 	c.JSON(http.StatusOK, "OK")
+}
+
+func SendAll(r, g, b uint8) {
+	LEDA.Send(r, g, b)
+	LEDB.Send(r, g, b)
+	LEDC.Send(r, g, b)
+	LEDD.Send(r, g, b)
 }

@@ -1,5 +1,5 @@
 development:
-       led_port_a: hoge
-       led_port_b: hoge
-       led_port_c: hoge
-       led_port_d: hoge
+       led_port_a: /dev/ttyAMA0
+       led_port_b: /dev/ttyACM1
+       led_port_c: /dev/ttyUSB0
+       led_port_d: /dev/ttyACM2
