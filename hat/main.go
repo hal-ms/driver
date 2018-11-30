@@ -1,11 +1,12 @@
 package main
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/makki0205/config"
 	"github.com/makki0205/log"
-	"github.com/pkg/errors"
+
 	"github.com/tarm/serial"
 )
 
@@ -55,7 +56,7 @@ func SendIsWearing(flg bool) error {
 	if flg {
 		flgS = "true"
 	}
-	_, err := http.Get(mainUrl + "/is_wearing/" + flgS)
+	_, err := http.Get(mainUrl + "/api/game/is_wearing/" + flgS)
 	if err != nil {
 		return errors.New("hat Driver [mainが見つかりません]")
 	}
