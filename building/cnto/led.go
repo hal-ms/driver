@@ -2,40 +2,63 @@ package cnto
 
 import (
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/makki0205/config"
+	"github.com/tarm/serial"
 
 	"github.com/gin-gonic/gin"
-	led "github.com/makki0205/led"
 )
 
-type LedInfo struct {
-	Red   byte `json:"r"`
-	Green byte `json:"g"`
-	Blue  byte `json:"b"`
-}
-
-var LEDA, _ = led.NewLED(config.Env("led_port_a"))
-var LEDB, _ = led.NewLED(config.Env("led_port_b"))
-var LEDC, _ = led.NewLED(config.Env("led_port_c"))
-var LEDD, _ = led.NewLED(config.Env("led_port_d"))
+var LEDA, _ = NewLED(config.Env("led_port_a"))
+var LEDB, _ = NewLED(config.Env("led_port_b"))
+var LEDC, _ = NewLED(config.Env("led_port_c"))
+var LEDD, _ = NewLED(config.Env("led_port_d"))
 
 func Led(c *gin.Context) {
-	var l LedInfo
-
-	err := c.BindJSON(&l)
+	scene, err := strconv.Atoi(c.Param("scene"))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, "NG")
-		return
+		c.JSON(http.StatusBadRequest, "すうじのみ")
 	}
 
-	SendAll(l.Red, l.Green, l.Blue)
+	SendAll(uint8(scene))
 	c.JSON(http.StatusOK, "OK")
 }
 
-func SendAll(r, g, b uint8) {
-	LEDA.Send(r, g, b)
-	LEDB.Send(r, g, b)
-	LEDC.Send(r, g, b)
-	LEDD.Send(r, g, b)
+func SendAll(scene uint8) {
+	LEDA.Send(scene)
+	LEDB.Send(scene)
+	LEDC.Send(scene)
+	LEDD.Send(scene)
+}
+
+type LED struct {
+	p *serial.Port
+}
+
+func NewLED(port string) (*LED, error) {
+
+	c := &serial.Config{Name: port, Baud: 9600}
+	s, err := serial.OpenPort(c)
+	if err != nil {
+		return nil, err
+	}
+	time.Sleep(2 * time.Second)
+	return &LED{p: s}, nil
+}
+
+func (l *LED) Send(scene uint8) error {
+	var res []byte
+	res = append(res, ToByte(scene))
+	_, err := l.p.Write(res)
+	if err != nil {
+		return err
+	}
+	err = l.p.Flush()
+	return err
+}
+
+func ToByte(i uint8) byte {
+	return byte(i)
 }
