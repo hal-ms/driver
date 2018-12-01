@@ -1,4 +1,4 @@
 development:
   slack_url: https://hooks.slack.com/services/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
   main_url: http://192.168.0.9:8000
-  serial_port: /dev/cu.usbmodem1421
+  serial_port: /dev/cu.usbmodem14111
