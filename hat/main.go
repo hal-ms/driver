@@ -53,6 +53,7 @@ func SendIsWearing(flg bool) {
 	}
 
 	go func() {
+		fmt.Println(mainUrl + "/api/game/is_wearing/" + flgS)
 		_, err := http.Get(mainUrl + "/api/game/is_wearing/" + flgS)
 		if err != nil {
 			log.Err(err)
